@@ -25,6 +25,10 @@ html {
   touch-action: pan-x pan-y;
 }
 
+section {
+  overflow-x: clip;
+}
+
 body {
   -webkit-overflow-scrolling: touch;
 }

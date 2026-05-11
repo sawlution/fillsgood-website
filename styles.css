@@ -5,28 +5,16 @@
 /* ── Base ──────────────────────────────────────────────────────── */
 *, *::before, *::after {
   box-sizing: border-box;
-  max-width: 100%;
 }
 
 * {
   -webkit-tap-highlight-color: transparent;
 }
 
-html, body {
-  max-width: 100%;
-  overflow-x: hidden;
-  margin: 0;
-  padding: 0;
-}
-
 html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
   touch-action: pan-x pan-y;
-}
-
-section {
-  overflow-x: clip;
 }
 
 body {

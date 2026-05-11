@@ -1,0 +1,467 @@
+/* ═══════════════════════════════════════════════════════════════
+   FillsGood Website — Custom Styles
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Base ──────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* ── Navbar ────────────────────────────────────────────────────── */
+#navbar {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#navbar.scrolled {
+  border-bottom-color: #E5E7EB;
+  box-shadow: 0 1px 40px rgba(0, 0, 0, 0.06);
+}
+
+/* Burger animation */
+#burger.open .burger-line:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+#burger.open .burger-line:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+#burger.open .burger-line:nth-child(3) {
+  width: 24px;
+  transform: translateY(-8px) rotate(-45deg);
+}
+.burger-line {
+  display: block;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* ── Scroll Reveal Animation ───────────────────────────────────── */
+.reveal-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.65s ease-out, transform 0.65s ease-out;
+}
+
+.reveal-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── How-it-works Cards ────────────────────────────────────────── */
+.how-card {
+  position: relative;
+  background: #FFFFFF;
+  border-radius: 24px;
+  padding: 2rem;
+  border: 1px solid #E5E7EB;
+  overflow: hidden;
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.how-card:hover {
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+  transform: translateY(-4px);
+}
+
+.how-number {
+  position: absolute;
+  top: -10px;
+  right: 16px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: 5rem;
+  color: #EEF0FB;
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+}
+
+.how-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: #EEF0FB;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+
+/* ── Check Icons ───────────────────────────────────────────────── */
+.check-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #EEF0FB;
+  color: #4F4698;
+  font-size: 12px;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ── Category Cards ────────────────────────────────────────────── */
+.cat-card {
+  background: #FFFFFF;
+  border-radius: 20px;
+  border: 1px solid #E5E7EB;
+  padding: 1.75rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: default;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.cat-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+}
+
+.cat-emoji {
+  font-size: 2.25rem;
+  line-height: 1;
+}
+
+.cat-label {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-align: center;
+  color: #0F1220;
+}
+
+/* ── City Background Decoration ───────────────────────────────── */
+.city-bg-decoration {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 120%, rgba(79, 70, 152, 0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ── Floating & Pulse Animations ───────────────────────────────── */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-15px); }
+}
+
+@keyframes pulse-slow {
+  0%, 100% { transform: scale(1);   opacity: 0.20; }
+  50%       { transform: scale(1.1); opacity: 0.30; }
+}
+
+.animate-float           { animation: float 4s ease-in-out infinite; }
+.animate-float-delayed-1 { animation: float 4s ease-in-out infinite; animation-delay: 0.5s; }
+.animate-float-delayed-2 { animation: float 4s ease-in-out infinite; animation-delay: 1.0s; }
+.animate-float-delayed-3 { animation: float 4s ease-in-out infinite; animation-delay: 1.5s; }
+.animate-pulse-slow      { animation: pulse-slow 8s ease-in-out infinite; }
+
+/* Legacy — kept for compat */
+.iphone-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* ── iPhone Mockup ─────────────────────────────────────────────── */
+
+.iphone-frame {
+  width: 280px;
+  height: 560px;
+  border-radius: 44px;
+  background: #1A1A1E;
+  padding: 10px;
+  box-shadow:
+    0 60px 120px rgba(0, 0, 0, 0.30),
+    0 20px 40px rgba(0, 0, 0, 0.18),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.10);
+  position: relative;
+}
+
+.iphone-frame.iphone-sm {
+  width: 240px;
+  height: 480px;
+  border-radius: 38px;
+}
+
+.iphone-screen {
+  width: 100%;
+  height: 100%;
+  border-radius: 36px;
+  background: #0F1220;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.iphone-frame.iphone-sm .iphone-screen {
+  border-radius: 30px;
+}
+
+.iphone-status-bar {
+  height: 44px;
+  background: #0F1220;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iphone-status-bar::before {
+  content: '';
+  width: 80px;
+  height: 20px;
+  background: #1A1A1E;
+  border-radius: 0 0 16px 16px;
+}
+
+.iphone-app-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* App header bar */
+.app-header {
+  padding: 12px 16px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.app-header-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+}
+
+.app-header-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.9);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Fake map */
+.app-map {
+  flex: 1;
+  background:
+    radial-gradient(ellipse at 30% 40%, rgba(79,70,152,0.35) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 70%, rgba(79,70,152,0.25) 0%, transparent 40%),
+    linear-gradient(135deg, #141A2B 0%, #1A1F35 50%, #111827 100%);
+  position: relative;
+  min-height: 160px;
+}
+
+/* Map grid lines */
+.app-map::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Map pins */
+.map-pin {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: pin-appear 0.5s ease-out both;
+}
+
+.pin-1 { left: 20%; top: 30%; animation-delay: 0.2s; }
+.pin-2 { right: 18%; top: 20%; animation-delay: 0.4s; }
+.pin-3 { left: 45%; bottom: 25%; animation-delay: 0.6s; }
+
+@keyframes pin-appear {
+  from { opacity: 0; transform: scale(0.6) translateY(6px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.map-pin-bubble {
+  background: #4F4698;
+  border-radius: 10px;
+  padding: 4px 8px;
+  font-size: 9px;
+  font-weight: 700;
+  color: white;
+  white-space: nowrap;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  box-shadow: 0 4px 12px rgba(79,70,152,0.5);
+}
+
+.map-pin-tail {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid #4F4698;
+  margin-top: -1px;
+}
+
+/* Bottom offer card */
+.app-card {
+  margin: 8px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 10px;
+  display: flex;
+  gap: 10px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.08);
+  flex-shrink: 0;
+}
+
+.app-card-img {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #6D5AAA, #4F4698);
+  flex-shrink: 0;
+}
+
+.app-card-text {
+  flex: 1;
+}
+
+.app-card-title {
+  font-size: 10px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.9);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.app-card-sub {
+  font-size: 9px;
+  color: rgba(255,255,255,0.5);
+  margin-top: 2px;
+}
+
+.app-card-price {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 4px;
+}
+
+.app-card-old {
+  font-size: 9px;
+  color: rgba(255,255,255,0.35);
+  text-decoration: line-through;
+}
+
+.app-card-new {
+  font-size: 11px;
+  font-weight: 800;
+  color: white;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Savings banner */
+.app-savings-banner {
+  padding: 8px 14px;
+  background: rgba(79,70,152,0.25);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  color: rgba(255,255,255,0.8);
+  border-top: 1px solid rgba(79,70,152,0.3);
+  flex-shrink: 0;
+}
+
+/* Merchant mock stats */
+.merchant-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  padding: 8px;
+}
+
+.merchant-stat-card {
+  background: rgba(79,70,152,0.2);
+  border-radius: 12px;
+  padding: 10px 12px;
+  text-align: center;
+  border: 1px solid rgba(79,70,152,0.3);
+}
+
+.merchant-stat-val {
+  font-size: 22px;
+  font-weight: 800;
+  color: white;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.merchant-stat-label {
+  font-size: 8px;
+  color: rgba(255,255,255,0.55);
+  margin-top: 2px;
+}
+
+.merchant-offer-list {
+  padding: 4px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.merchant-offer-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 10px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 10px;
+  font-size: 9px;
+  color: rgba(255,255,255,0.75);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+}
+
+.merchant-offer-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #4F4698;
+  flex-shrink: 0;
+}
+
+.merchant-offer-badge {
+  margin-left: auto;
+  background: rgba(79,70,152,0.35);
+  color: rgba(255,255,255,0.7);
+  font-size: 8px;
+  padding: 2px 6px;
+  border-radius: 99px;
+}
+
+/* ── Responsive adjustments ────────────────────────────────────── */
+@media (max-width: 640px) {
+  .iphone-frame {
+    width: 240px;
+    height: 480px;
+  }
+  .iphone-frame:not(.iphone-sm) .iphone-screen {
+    border-radius: 30px;
+  }
+}

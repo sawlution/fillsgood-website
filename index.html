@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FillsGood — L'app qui remplit les créneaux vides à Bordeaux | Yoga, Massage, Escape Games</title>
+  <meta name="description" content="FillsGood connecte les commerçants bordelais ayant des créneaux libres avec les clients à proximité, en temps réel. Yoga, massage, ateliers, escape games à prix réduits." />
+  <meta name="keywords" content="Bordeaux, application mobile, réservation, dernière minute, yoga, massage, escape game, atelier, bons plans Bordeaux" />
+  <meta name="theme-color" content="#4F4698" />
+  <link rel="canonical" href="https://fillsgood.fr/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="FillsGood — Remplissez vos créneaux vides. Découvrez Bordeaux autrement." />
+  <meta property="og:description" content="FillsGood connecte les commerçants bordelais ayant des créneaux libres avec les clients à proximité, en temps réel." />
+  <meta property="og:url" content="https://fillsgood.fr/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://fillsgood.fr/assets/og-image.jpg" />
+  <meta property="og:locale" content="fr_FR" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="FillsGood — Remplissez vos créneaux vides." />
+  <meta name="twitter:description" content="Connecte les commerçants bordelais avec les clients à proximité, en temps réel." />
+  <meta name="twitter:image" content="https://fillsgood.fr/assets/og-image.jpg" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/logo_fond_blanc_lettres_violettes.png" />
+  <link rel="apple-touch-icon" href="assets/logo_fond_blanc_lettres_violettes.png" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: '#4F4698',
+            'brand-hover': '#6D5AAA',
+            'brand-light': '#EEF0FB',
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+          },
+          borderRadius: {
+            '4xl': '2rem',
+          },
+        },
+      },
+    }
+  </script>
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-white text-[#0F1220] antialiased">
+
+  <!-- ═══════════════════════════════════════ NAVBAR ═══════════════════════════════════════ -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 lg:h-18">
+
+        <!-- Logo -->
+        <a href="#" class="flex items-center gap-2">
+          <img src="assets/logo_fond_blanc_lettres_violettes.png" alt="FillsGood" class="w-10 h-10 object-contain" />
+          <span class="font-display font-bold text-xl text-[#0F1220]">FillsGood</span>
+        </a>
+
+        <!-- Links desktop -->
+        <div class="hidden lg:flex items-center gap-8">
+          <a href="#how" class="text-sm font-medium text-[#6B7280] hover:text-[#0F1220] transition-colors">Comment ça marche</a>
+          <a href="#clients" class="text-sm font-medium text-[#6B7280] hover:text-[#0F1220] transition-colors">Pour les clients</a>
+          <a href="#merchants" class="text-sm font-medium text-[#6B7280] hover:text-[#0F1220] transition-colors">Pour les commerçants</a>
+          <a href="#contact" class="text-sm font-medium text-[#6B7280] hover:text-[#0F1220] transition-colors">Contact</a>
+        </div>
+
+        <!-- CTA + burger -->
+        <div class="flex items-center gap-4">
+          <a href="#download" class="hidden lg:inline-flex items-center gap-2 bg-brand text-white text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-brand-hover transition-all hover:scale-[1.02] hover:shadow-lg hover:shadow-brand/20">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path d="M8 12l4 4 4-4"/><line x1="12" y1="8" x2="12" y2="16"/></svg>
+            Télécharger
+          </a>
+          <button id="burger" class="lg:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5" aria-label="Menu">
+            <span class="burger-line w-6 h-0.5 bg-[#0F1220] rounded-full transition-all"></span>
+            <span class="burger-line w-6 h-0.5 bg-[#0F1220] rounded-full transition-all"></span>
+            <span class="burger-line w-4 h-0.5 bg-[#0F1220] rounded-full transition-all"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-[#E5E7EB] px-6 pb-6 pt-4">
+      <div class="flex flex-col gap-4">
+        <a href="#how" class="text-sm font-medium text-[#6B7280]">Comment ça marche</a>
+        <a href="#clients" class="text-sm font-medium text-[#6B7280]">Pour les clients</a>
+        <a href="#merchants" class="text-sm font-medium text-[#6B7280]">Pour les commerçants</a>
+        <a href="#contact" class="text-sm font-medium text-[#6B7280]">Contact</a>
+        <a href="#download" class="inline-flex items-center justify-center gap-2 bg-brand text-white text-sm font-semibold px-5 py-3 rounded-full mt-2">
+          Télécharger l'app
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════ HERO ═══════════════════════════════════════ -->
+  <section id="hero" class="pt-28 pb-20 lg:pt-36 lg:pb-28 px-6 lg:px-8 max-w-7xl mx-auto">
+    <div class="grid lg:grid-cols-2 gap-16 lg:gap-12 items-center">
+
+      <!-- Left -->
+      <div class="reveal-up">
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-2 bg-brand-light border border-brand/20 text-brand text-sm font-medium px-4 py-2 rounded-full mb-8">
+          🚀 <span>Bientôt disponible sur l'App Store</span>
+        </div>
+
+        <h1 class="font-display font-bold text-[clamp(36px,5vw,64px)] leading-[1.1] tracking-tight text-[#0F1220] mb-6">
+          Remplissez vos créneaux vides.<br />
+          <span class="text-brand">Découvrez Bordeaux</span><br />
+          autrement.
+        </h1>
+
+        <p class="text-[#6B7280] text-lg leading-relaxed mb-10 max-w-lg">
+          FillsGood connecte les commerçants ayant des créneaux libres avec les clients à proximité, en temps réel. Une nouvelle façon de découvrir les expériences locales.
+        </p>
+
+        <!-- CTAs -->
+        <div class="flex flex-col sm:flex-row gap-3 mb-10">
+          <a href="#download" id="download" class="inline-flex items-center justify-center gap-3 bg-brand text-white font-semibold px-7 py-4 rounded-full text-base hover:bg-brand-hover transition-all hover:scale-[1.02] hover:shadow-xl hover:shadow-brand/25">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            Télécharger l'app
+          </a>
+          <a href="#merchants" class="inline-flex items-center justify-center gap-2 border-2 border-[#0F1220] text-[#0F1220] font-semibold px-7 py-4 rounded-full text-base hover:bg-[#0F1220] hover:text-white transition-all">
+            Je suis commerçant →
+          </a>
+        </div>
+
+        <!-- Tags -->
+        <div class="flex items-center gap-3 text-sm text-[#94A3B8]">
+          <span class="flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-brand inline-block"></span>
+            Bordeaux
+          </span>
+          <span>·</span>
+          <span>Lancement 2026</span>
+          <span>·</span>
+          <span>iOS</span>
+        </div>
+      </div>
+
+      <!-- Right — Hero mockup avec orbes + floating cards -->
+      <div class="relative flex items-center justify-center min-h-[540px] reveal-up" style="animation-delay: 0.15s">
+
+        <!-- Orbes violets flous -->
+        <div class="absolute inset-0 pointer-events-none">
+          <div class="absolute -top-32 -left-32 w-[500px] h-[500px] rounded-full bg-[#4F4698] animate-pulse-slow"
+               style="opacity:0.25; filter:blur(120px);"></div>
+          <div class="absolute -bottom-32 -right-32 w-[600px] h-[600px] rounded-full bg-[#8B7DC9] animate-pulse-slow"
+               style="opacity:0.30; filter:blur(140px); animation-delay:1.5s;"></div>
+          <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] rounded-full bg-[#4F4698] animate-pulse-slow"
+               style="opacity:0.15; filter:blur(130px); animation-delay:3s;"></div>
+        </div>
+
+        <!-- Screen 3D principal -->
+        <div class="relative z-10 hero-mockup animate-float">
+          <img src="assets/screen-map-left.png"
+               alt="FillsGood — Carte des offres à Bordeaux"
+               class="w-full max-w-[360px] mx-auto drop-shadow-2xl"
+               loading="lazy" />
+        </div>
+
+        <!-- Floating card 1 : Note -->
+        <div class="absolute top-10 left-0 lg:-left-4 bg-white rounded-2xl p-4 shadow-xl border border-gray-100 z-20 animate-float-delayed-1 max-w-[180px]">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-yellow-50 flex items-center justify-center flex-shrink-0">
+              <span class="text-xl">⭐</span>
+            </div>
+            <div>
+              <div class="text-xs text-gray-500 font-medium">Note moyenne</div>
+              <div class="text-lg font-bold text-[#0F1220]">4.9 / 5</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Floating card 2 : Économies -->
+        <div class="absolute bottom-16 -right-4 lg:right-0 bg-white rounded-2xl p-4 shadow-xl border border-gray-100 z-20 animate-float-delayed-2 max-w-[200px]">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-[#4F4698]/10 flex items-center justify-center flex-shrink-0">
+              <span class="text-xl">💰</span>
+            </div>
+            <div>
+              <div class="text-xs text-gray-500 font-medium">Économies moyennes</div>
+              <div class="text-lg font-bold text-[#4F4698]">110€ /mois</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Floating card 3 : Réservation rapide (desktop seulement) -->
+        <div class="absolute top-1/2 -right-8 lg:right-2 -translate-y-1/2 bg-white rounded-2xl p-3 shadow-xl border border-gray-100 z-20 animate-float-delayed-3 max-w-[160px] hidden md:flex items-center gap-2">
+          <div class="w-8 h-8 rounded-lg bg-green-50 flex items-center justify-center flex-shrink-0">
+            <span class="text-base">⚡</span>
+          </div>
+          <div>
+            <div class="text-[10px] text-gray-500 font-medium">Réservation en</div>
+            <div class="text-sm font-bold text-[#0F1220]">~30 sec</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ LOGOS PARTENAIRES ═══════════════════════════════════════ -->
+  <section class="py-16 border-y border-[#E5E7EB] bg-[#FAFAFA]">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <p class="text-center text-sm font-medium text-[#94A3B8] uppercase tracking-widest mb-10">Bientôt en partenariat avec</p>
+      <div class="flex flex-wrap items-center justify-center gap-8 lg:gap-12">
+        <!-- Placeholder logos -->
+        <div class="h-8 w-28 bg-[#E5E7EB] rounded-lg opacity-60"></div>
+        <div class="h-8 w-24 bg-[#E5E7EB] rounded-lg opacity-60"></div>
+        <div class="h-8 w-32 bg-[#E5E7EB] rounded-lg opacity-60"></div>
+        <div class="h-8 w-20 bg-[#E5E7EB] rounded-lg opacity-60"></div>
+        <div class="h-8 w-28 bg-[#E5E7EB] rounded-lg opacity-60"></div>
+        <div class="h-8 w-24 bg-[#E5E7EB] rounded-lg opacity-60"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Divider -->
+  <div class="flex justify-center py-6"><div class="w-12 h-1 rounded-full bg-[#4F4698] opacity-30"></div></div>
+
+  <!-- ═══════════════════════════════════════ COMMENT ÇA MARCHE ═══════════════════════════════════════ -->
+  <section id="how" class="py-24 lg:py-32 px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+
+      <div class="text-center mb-16 reveal-up">
+        <h2 class="font-display font-bold text-[clamp(28px,4vw,48px)] leading-tight tracking-tight text-[#0F1220] mb-4">Comment ça marche</h2>
+        <p class="text-[#6B7280] text-lg max-w-2xl mx-auto">Trois étapes simples pour transformer un créneau vide en opportunité.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
+
+        <!-- Étape 1 -->
+        <div class="how-card reveal-up" style="animation-delay:0.05s">
+          <div class="how-number">01</div>
+          <div class="how-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4F4698" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h3 class="font-display font-bold text-xl text-[#0F1220] mb-3">Le commerçant publie</h3>
+          <p class="text-[#6B7280] leading-relaxed">Une salle libre dans 30 minutes ? Publication en 3 clics depuis l'app. Prix, durée, places disponibles.</p>
+        </div>
+
+        <!-- Étape 2 -->
+        <div class="how-card reveal-up" style="animation-delay:0.15s">
+          <div class="how-number">02</div>
+          <div class="how-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4F4698" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <h3 class="font-display font-bold text-xl text-[#0F1220] mb-3">L'offre apparaît</h3>
+          <p class="text-[#6B7280] leading-relaxed">Géolocalisée en temps réel sur la carte des utilisateurs à proximité. Pas besoin de chercher.</p>
+        </div>
+
+        <!-- Étape 3 -->
+        <div class="how-card reveal-up" style="animation-delay:0.25s">
+          <div class="how-number">03</div>
+          <div class="how-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4F4698" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h3 class="font-display font-bold text-xl text-[#0F1220] mb-3">Le client réserve</h3>
+          <p class="text-[#6B7280] leading-relaxed">Le premier qui réserve obtient le créneau. Paiement sécurisé, itinéraire intégré.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Divider -->
+  <div class="flex justify-center py-6"><div class="w-12 h-1 rounded-full bg-[#4F4698] opacity-30"></div></div>
+
+  <!-- ═══════════════════════════════════════ POUR LES CLIENTS ═══════════════════════════════════════ -->
+  <section id="clients" class="py-24 lg:py-32 px-6 lg:px-8 bg-[#FAFAFA]">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
+
+        <!-- Screen offre (face) -->
+        <div class="relative flex justify-center reveal-up order-1 lg:order-none">
+          <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <div class="w-80 h-80 rounded-full bg-[#4F4698] opacity-10 blur-3xl"></div>
+          </div>
+          <img src="assets/screen-offre.png"
+               alt="Page de détail d'une offre FillsGood"
+               class="relative z-10 w-full max-w-[300px] mx-auto drop-shadow-2xl animate-float"
+               loading="lazy" />
+        </div>
+
+        <!-- Texte droite -->
+        <div class="reveal-up order-none lg:order-1" style="animation-delay:0.1s">
+          <span class="inline-block text-brand text-xs font-bold uppercase tracking-widest mb-4">Pour les explorateurs urbains</span>
+          <h2 class="font-display font-bold text-[clamp(26px,3.5vw,44px)] leading-tight tracking-tight text-[#0F1220] mb-6">Découvrez les meilleures adresses locales à prix réduit</h2>
+          <p class="text-[#6B7280] text-lg leading-relaxed mb-8">Vous adorez tester de nouvelles expériences à Bordeaux ? FillsGood vous fait découvrir les meilleures adresses locales à prix réduit, en temps réel et à proximité.</p>
+
+          <ul class="space-y-4 mb-10">
+            <li class="flex items-start gap-3">
+              <span class="check-icon">✓</span>
+              <span class="text-[#0F1220] font-medium">Économies cumulées suivies dans l'app</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="check-icon">✓</span>
+              <span class="text-[#0F1220] font-medium">Géolocalisation intelligente (rayon 2 km)</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="check-icon">✓</span>
+              <span class="text-[#0F1220] font-medium">Réservation instantanée, paiement intégré</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="check-icon">✓</span>
+              <span class="text-[#0F1220] font-medium">Itinéraire piéton ou voiture inclus</span>
+            </li>
+          </ul>
+
+          <a href="#download" class="inline-flex items-center gap-2 bg-brand text-white font-semibold px-7 py-4 rounded-full hover:bg-brand-hover transition-all hover:scale-[1.02] hover:shadow-xl hover:shadow-brand/25">
+            Télécharger l'app gratuitement
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Divider -->
+  <div class="flex justify-center py-6"><div class="w-12 h-1 rounded-full bg-[#4F4698] opacity-30"></div></div>
+
+  <!-- ═══════════════════════════════════════ POUR LES COMMERÇANTS ═══════════════════════════════════════ -->
+  <section id="merchants" class="py-24 lg:py-32 px-6 lg:px-8 bg-white">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
+
+        <!-- Texte gauche -->
+        <div class="reveal-up">
+          <span class="inline-block text-brand text-xs font-bold uppercase tracking-widest mb-4">Pour les commerçants ambitieux</span>
+          <h2 class="font-display font-bold text-[clamp(26px,3.5vw,44px)] leading-tight tracking-tight text-[#0F1220] mb-6">Transformez vos créneaux vides en revenus</h2>
+          <p class="text-[#6B7280] text-lg leading-relaxed mb-8">Vous êtes masseur, prof de yoga, céramiste, gérant d'escape game ? FillsGood remplit vos cases vides sans engagement et sans commission.</p>
+
+          <ul class="space-y-4 mb-10">
+            <li class="flex items-start gap-3">
+              <span class="check-icon">✓</span>
+              <span class="text-[#0F1220] font-medium">Aucun engagement, aucun abonnement</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="check-icon">✓</span>
+              <span class="text-[#0F1220] font-medium">0% de commission sur vos prix (vous gardez 100%)</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="check-icon">✓</span>
+              <span class="text-[#0F1220] font-medium">2€ de frais payés par le client final uniquement</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="check-icon">✓</span>
+              <span class="text-[#0F1220] font-medium">Publication d'une offre en 30 secondes</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="check-icon">✓</span>
+              <span class="text-[#0F1220] font-medium">Tableau de bord avec statistiques en temps réel</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="check-icon">✓</span>
+              <span class="text-[#0F1220] font-medium">Visibilité géolocalisée auprès des utilisateurs</span>
+            </li>
+          </ul>
+
+          <a href="mailto:thomas@fillsgood.fr" id="contact" class="inline-flex items-center gap-2 bg-brand text-white font-semibold px-7 py-4 rounded-full hover:bg-brand-hover transition-all hover:scale-[1.02] hover:shadow-xl hover:shadow-brand/25">
+            Devenir commerçant partenaire →
+          </a>
+        </div>
+
+        <!-- Double mockup commerçant -->
+        <div class="relative h-[520px] flex items-center justify-center reveal-up" style="animation-delay:0.1s">
+          <!-- Orbe violet -->
+          <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <div class="w-96 h-96 rounded-full bg-[#4F4698] opacity-10 blur-3xl"></div>
+          </div>
+          <!-- Screen dispo-left (3D, en arrière) -->
+          <div class="absolute z-10 animate-float-delayed-1" style="transform: translateX(-60px) translateY(16px)">
+            <img src="assets/screen-dispo-left.png"
+                 alt="Mode commerçant — J'ai une dispo"
+                 class="w-full max-w-[220px] drop-shadow-xl"
+                 loading="lazy" />
+          </div>
+          <!-- Screen publier (face, en avant) -->
+          <div class="relative z-20 animate-float" style="transform: translateX(50px) translateY(-16px)">
+            <img src="assets/screen-publier.png"
+                 alt="Formulaire de publication d'offre"
+                 class="w-full max-w-[260px] drop-shadow-2xl"
+                 loading="lazy" />
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ CATÉGORIES ═══════════════════════════════════════ -->
+  <section class="py-24 lg:py-32 px-6 lg:px-8 bg-[#FAFAFA]">
+    <div class="max-w-7xl mx-auto">
+
+      <div class="text-center mb-16 reveal-up">
+        <h2 class="font-display font-bold text-[clamp(28px,4vw,48px)] leading-tight tracking-tight text-[#0F1220] mb-4">Toutes vos passions, à portée de main</h2>
+        <p class="text-[#6B7280] text-lg max-w-xl mx-auto">Une diversité d'expériences pour tous les goûts.</p>
+      </div>
+
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+        <div class="cat-card reveal-up" style="animation-delay:0.05s">
+          <span class="cat-emoji">🧘</span>
+          <span class="cat-label">Yoga & Pilates</span>
+        </div>
+        <div class="cat-card reveal-up" style="animation-delay:0.10s">
+          <span class="cat-emoji">💆</span>
+          <span class="cat-label">Massage & Bien-être</span>
+        </div>
+        <div class="cat-card reveal-up" style="animation-delay:0.15s">
+          <span class="cat-emoji">🎨</span>
+          <span class="cat-label">Ateliers créatifs</span>
+        </div>
+        <div class="cat-card reveal-up" style="animation-delay:0.20s">
+          <span class="cat-emoji">🧩</span>
+          <span class="cat-label">Escape Games</span>
+        </div>
+        <div class="cat-card reveal-up" style="animation-delay:0.25s">
+          <span class="cat-emoji">🍳</span>
+          <span class="cat-label">Cours de cuisine</span>
+        </div>
+        <div class="cat-card reveal-up" style="animation-delay:0.30s">
+          <span class="cat-emoji">💇</span>
+          <span class="cat-label">Coiffure & Barbier</span>
+        </div>
+        <div class="cat-card reveal-up" style="animation-delay:0.35s">
+          <span class="cat-emoji">💅</span>
+          <span class="cat-label">Soin & Beauté</span>
+        </div>
+        <div class="cat-card reveal-up" style="animation-delay:0.40s">
+          <span class="cat-emoji">📸</span>
+          <span class="cat-label">Photo & Création</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ VILLE PILOTE ═══════════════════════════════════════ -->
+  <section class="py-24 lg:py-32 px-6 lg:px-8 bg-white relative overflow-hidden">
+    <!-- Background city silhouette decoration -->
+    <div class="city-bg-decoration" aria-hidden="true"></div>
+
+    <div class="max-w-7xl mx-auto relative z-10">
+      <div class="text-center mb-16 reveal-up">
+        <div class="inline-flex items-center gap-2 bg-brand-light border border-brand/20 text-brand text-sm font-medium px-4 py-2 rounded-full mb-6">
+          📍 Phase pilote en cours
+        </div>
+        <h2 class="font-display font-bold text-[clamp(28px,4vw,48px)] leading-tight tracking-tight text-[#0F1220] mb-4">Lancement à Bordeaux</h2>
+        <p class="text-[#6B7280] text-lg max-w-2xl mx-auto">FillsGood démarre sa phase pilote dans la capitale girondine avec un cercle restreint de commerçants fondateurs.</p>
+      </div>
+
+      <div class="grid grid-cols-3 gap-6 lg:gap-10 max-w-3xl mx-auto">
+        <div class="text-center reveal-up" style="animation-delay:0.05s">
+          <div class="font-display font-bold text-[clamp(40px,6vw,72px)] text-brand leading-none mb-2">170+</div>
+          <div class="text-[#6B7280] text-sm lg:text-base font-medium">commerces identifiés</div>
+        </div>
+        <div class="text-center reveal-up" style="animation-delay:0.15s">
+          <div class="font-display font-bold text-[clamp(40px,6vw,72px)] text-brand leading-none mb-2">8</div>
+          <div class="text-[#6B7280] text-sm lg:text-base font-medium">catégories couvertes</div>
+        </div>
+        <div class="text-center reveal-up" style="animation-delay:0.25s">
+          <div class="font-display font-bold text-[clamp(40px,6vw,72px)] text-brand leading-none mb-2">2026</div>
+          <div class="text-[#6B7280] text-sm lg:text-base font-medium">année de lancement</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ CTA FINAL ═══════════════════════════════════════ -->
+  <section class="py-24 lg:py-32 px-6 lg:px-8 bg-brand">
+    <div class="max-w-3xl mx-auto text-center reveal-up">
+      <h2 class="font-display font-bold text-[clamp(28px,4vw,48px)] leading-tight tracking-tight text-white mb-6">Prêt à transformer votre quotidien ?</h2>
+      <p class="text-white/75 text-lg leading-relaxed mb-12">Téléchargez l'app gratuitement ou rejoignez notre réseau de commerçants partenaires.</p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="#download" class="inline-flex items-center gap-3 bg-white text-brand font-bold px-8 py-4 rounded-full hover:shadow-2xl transition-all hover:scale-[1.02] text-base">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          Télécharger FillsGood
+        </a>
+        <a href="mailto:thomas@fillsgood.fr" class="inline-flex items-center justify-center gap-2 border-2 border-white/50 text-white font-semibold px-8 py-4 rounded-full hover:bg-white/10 transition-all text-base">
+          Devenir partenaire →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ FOOTER ═══════════════════════════════════════ -->
+  <footer class="bg-[#0F1220] text-white px-6 lg:px-8 pt-16 pb-10">
+    <div class="max-w-7xl mx-auto">
+
+      <!-- Signature visuelle -->
+      <div class="text-center mb-12 pb-12 border-b border-white/10">
+        <h2 class="font-display font-bold text-[clamp(48px,10vw,96px)] text-white/10 tracking-tighter leading-none mb-4">FillsGood</h2>
+        <p class="text-white/60 max-w-md mx-auto text-base">L'app qui remplit les créneaux vides et fait découvrir Bordeaux autrement.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-12 mb-16">
+
+        <!-- Col 1 -->
+        <div class="lg:col-span-1">
+          <div class="flex items-center gap-3 mb-4">
+            <img src="assets/logo_fond_violet_lettres_blanches.png" alt="FillsGood" class="w-12 h-12 object-contain rounded-xl" />
+            <span class="font-display font-bold text-xl">FillsGood</span>
+          </div>
+          <p class="text-[#94A3B8] text-sm leading-relaxed mb-6">L'app qui remplit les créneaux vides à Bordeaux.</p>
+          <div class="flex items-center gap-3">
+            <!-- Twitter/X -->
+            <a href="#" aria-label="Twitter" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.265 5.638L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <!-- Instagram -->
+            <a href="#" aria-label="Instagram" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="white" stroke="none"/></svg>
+            </a>
+            <!-- LinkedIn -->
+            <a href="#" aria-label="LinkedIn" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2zm2-4a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Col 2 -->
+        <div>
+          <h4 class="font-display font-bold text-sm uppercase tracking-widest text-[#94A3B8] mb-5">Produit</h4>
+          <ul class="space-y-3">
+            <li><a href="#how" class="text-[#94A3B8] hover:text-white text-sm transition-colors">Comment ça marche</a></li>
+            <li><a href="#clients" class="text-[#94A3B8] hover:text-white text-sm transition-colors">Pour les clients</a></li>
+            <li><a href="#merchants" class="text-[#94A3B8] hover:text-white text-sm transition-colors">Pour les commerçants</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3 -->
+        <div>
+          <h4 class="font-display font-bold text-sm uppercase tracking-widest text-[#94A3B8] mb-5">Entreprise</h4>
+          <ul class="space-y-3">
+            <li><a href="#" class="text-[#94A3B8] hover:text-white text-sm transition-colors">À propos</a></li>
+            <li><a href="mailto:thomas@fillsgood.fr" class="text-[#94A3B8] hover:text-white text-sm transition-colors">Contact</a></li>
+            <li><a href="#" class="text-[#94A3B8] hover:text-white text-sm transition-colors">Blog</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4 -->
+        <div>
+          <h4 class="font-display font-bold text-sm uppercase tracking-widest text-[#94A3B8] mb-5">Légal</h4>
+          <ul class="space-y-3">
+            <li><a href="#" class="text-[#94A3B8] hover:text-white text-sm transition-colors">Mentions légales</a></li>
+            <li><a href="#" class="text-[#94A3B8] hover:text-white text-sm transition-colors">CGU</a></li>
+            <li><a href="#" class="text-[#94A3B8] hover:text-white text-sm transition-colors">Politique de confidentialité</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Bottom -->
+      <div class="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <p class="text-[#94A3B8] text-sm">© 2026 FillsGood — Bordeaux, France</p>
+        <p class="text-[#94A3B8] text-sm">Conçu et développé avec ❤️ à Bordeaux</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

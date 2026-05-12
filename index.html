@@ -18,9 +18,12 @@
   <meta property="og:url" content="https://fillsgood.fr/" />
   <meta property="og:title" content="FillsGood — L'app pour remplir les créneaux vides à Bordeaux" />
   <meta property="og:description" content="FillsGood connecte les commerçants bordelais ayant des créneaux libres avec les clients à proximité. Yoga, massage, escape games à prix réduits." />
-  <meta property="og:image" content="https://fillsgood.fr/assets/og-image.png" />
+  <meta property="og:image" content="https://fillsgood.fr/assets/logo_fond_violet_lettres_blanches.png" />
+  <meta property="og:image:secure_url" content="https://fillsgood.fr/assets/logo_fond_violet_lettres_blanches.png" />
+  <meta property="og:image:type" content="image/png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Logo FillsGood" />
   <meta property="og:locale" content="fr_FR" />
   <meta property="og:site_name" content="FillsGood" />
 
@@ -29,17 +32,36 @@
   <meta name="twitter:url" content="https://fillsgood.fr/" />
   <meta name="twitter:title" content="FillsGood — L'app pour remplir les créneaux vides à Bordeaux" />
   <meta name="twitter:description" content="FillsGood connecte les commerçants bordelais ayant des créneaux libres avec les clients à proximité." />
-  <meta name="twitter:image" content="https://fillsgood.fr/assets/og-image.png" />
+  <meta name="twitter:image" content="https://fillsgood.fr/assets/logo_fond_violet_lettres_blanches.png" />
+  <meta name="twitter:image:alt" content="Logo FillsGood" />
 
   <!-- Theme color -->
   <meta name="theme-color" content="#4F4698" />
   <meta name="msapplication-TileColor" content="#4F4698" />
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="assets/logo-purple.png" />
-  <link rel="apple-touch-icon" href="assets/logo-purple.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/logo_fond_violet_lettres_blanches.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/logo_fond_violet_lettres_blanches.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/logo_fond_violet_lettres_blanches.png" />
+  <link rel="shortcut icon" href="assets/logo_fond_violet_lettres_blanches.png" />
+  <meta name="msapplication-TileImage" content="assets/logo_fond_violet_lettres_blanches.png" />
 
-  <!-- Schema.org / JSON-LD pour résultats riches Google -->
+  <!-- Schema.org / JSON-LD — Organization (prioritaire pour logo Google) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "FillsGood",
+    "url": "https://fillsgood.fr",
+    "logo": "https://fillsgood.fr/assets/logo_fond_violet_lettres_blanches.png",
+    "description": "L'application mobile qui remplit les créneaux vides des commerçants bordelais en temps réel.",
+    "sameAs": [
+      "https://www.instagram.com/fillsgood_bordeaux"
+    ]
+  }
+  </script>
+
+  <!-- Schema.org / JSON-LD — MobileApplication -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -96,6 +118,11 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body class="bg-white text-[#0F1220] antialiased">
+  <!-- Logo pour priorité Google crawlers (caché visuellement) -->
+  <img src="assets/logo_fond_violet_lettres_blanches.png"
+       alt="FillsGood - Logo officiel"
+       style="position: absolute; left: -9999px; width: 512px; height: 512px;"
+       itemprop="logo" />
 
   <!-- ═══════════════════════════════════════ NAVBAR ═══════════════════════════════════════ -->
   <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">

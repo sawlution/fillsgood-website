@@ -118,11 +118,16 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body class="bg-white text-[#0F1220] antialiased">
-  <!-- Logo pour priorité Google crawlers (caché visuellement) -->
-  <img src="assets/logo_fond_violet_lettres_blanches.png"
-       alt="FillsGood - Logo officiel"
-       style="position: absolute; left: -9999px; width: 512px; height: 512px;"
-       itemprop="logo" />
+  <!-- Image prioritaire pour Google (1ère image trouvée) -->
+  <img
+    src="assets/logo_fond_violet_lettres_blanches.png"
+    alt="FillsGood - L'application qui remplit les créneaux vides à Bordeaux"
+    width="1200"
+    height="630"
+    style="position: absolute; top: 0; left: 0; width: 1px; height: 1px; opacity: 0.01; pointer-events: none; z-index: -1;"
+    itemprop="logo"
+    itemtype="https://schema.org/ImageObject"
+  />
 
   <!-- ═══════════════════════════════════════ NAVBAR ═══════════════════════════════════════ -->
   <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
